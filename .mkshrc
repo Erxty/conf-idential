@@ -20,6 +20,7 @@ mkcd() {
 	mkdir -p "$1" && cd "$1"
 }
 
+alias lg='lazygit'
 alias ls='ls --color -h'
 alias v='vis'
 alias ..='cd ..'
