@@ -1,0 +1,10 @@
+/*[aria-label="Inbox"] { display: none !important; }*/
+[aria-label="Help"] { display: none !important; }
+[class*="back__63abb"],
+[class*="forward__63abb"] { display: none !important; }
+[class*="title_c38106"] {display: none !important; }
+[class*="winButtons_c38106"] { display: none !important; }
+[class*="buttons__5126c"] { display: none !important; 
+background: #000000 !important; }
+[class*="buttonsInner__5126c"] { display: none !important; }
+[class*="hoverBarButton_f8441B"] { display: none !important; }

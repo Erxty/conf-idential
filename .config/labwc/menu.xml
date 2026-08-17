@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openbox_menu>
+<menu id="root-menu" label="root-menu">
+  <menu id="Accessories" label="apps">
+    <item label="term">
+      <action name="Execute"><command>foot</command></action>
+    </item>
+    <item label="file">
+      <action name="Execute"><command>pcmanfm</command></action>
+    </item>
+    <item label="audio">
+      <action name="Execute"><command>pavucontrol</command></action>
+    </item>
+    <item label="net">
+      <action name="Execute"><command>qutebrowser</command></action>
+    </item>
+    <item label="msgs">
+      <action name="Execute"><command>discord</command></action>
+    </item>
+  </menu> <!-- Accessories -->
+  <item label="reconf"><action name="Reconfigure" /></item>
+  <item label="exit"><action name="Exit" /></item>
+  <item label="reboot"><action name="loginctl reboot" /></item>
+  <item label="off"><action name="loginctl poweroff" /></item>
+</menu> <!-- root-menu -->
+</openbox_menu>

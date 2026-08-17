@@ -1,0 +1,11 @@
+{
+    "plugins": {},
+    "customCspRules": {
+        "external-content.duckduckgo.com": [
+            "connect-src",
+            "img-src",
+            "style-src",
+            "font-src"
+        ]
+    }
+}

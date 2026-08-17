@@ -1,0 +1,34 @@
+# ~/.mkshrc
+
+set -o vi
+
+function _pwd() {
+    case $PWD in
+        "$HOME") print "~" ;;
+        "$HOME"/*) print "~/${PWD#$HOME/}" ;;
+        *) print "$PWD" ;;
+    esac
+}
+
+PS1='>: ${USER} $(_pwd) ? '
+
+export EDITOR=vis
+export VISUAL=vis
+export PAGER=bat
+
+mkcd() {
+	mkdir -p "$1" && cd "$1"
+}
+
+alias ls='ls --color -h'
+alias v='vis'
+alias ..='cd ..'
+alias ...='cd ...'
+
+alias xsi='doas xbps-install'
+alias xsq='doas xbps-query'
+alias xsr='doas xbps-remove'
+
+alias quick-wlr='wlr-randr --output DP-1 --custom-mode 1280x960@90'
+
+alias vencord-installer='sh -c "$(curl -sS https://vencord.dev/install.sh)"'

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+exec neumenu_run \
+    -p 'Hello World!' \
+    -fn 'Sony fixed' \
+    -nb '#0d0d0d' \
+    -nf '#c8c093' \
+    -sb '#0d0d0d' \
+    -sf '#ffffff'

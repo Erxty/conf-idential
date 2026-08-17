@@ -1,0 +1,9 @@
+#!/bin/sh
+
+time="$(date "+%Y-%m-%d_%H-%M-%S")"
+geo=$(chum | awk '{split($1, coords, ","); print $2 "+" coords[1] "+" coords[2]}')
+
+swcsnap image $HOME/Pictures/Screenshots/${time}.ppm
+magick $HOME/Pictures/Screenshots/${time}.ppm $HOME/Pictures/Screenshots/${time}.jpg
+rm $HOME/Pictures/Screenshots/${time}.ppm
+magick $HOME/Pictures/Screenshots/${time}.jpg -crop $geo $HOME/Pictures/Screenshots/cropped-${time}.png

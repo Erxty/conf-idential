@@ -1,0 +1,283 @@
+<labwc_config>
+  <core>
+    <decoration>server</decoration>
+    <gap>5</gap>
+    <adaptiveSync>no</adaptiveSync>
+    <allowTearing>no</allowTearing>
+    <autoEnableOutputs>yes</autoEnableOutputs>
+    <hdr>no</hdr>
+    <reuseOutputMode>no</reuseOutputMode>
+    <xwaylandPersistence>no</xwaylandPersistence>
+    <primarySelection>yes</primarySelection>
+    <promptCommand>[see details below]</promptCommand>
+  </core>
+  <placement>
+    <policy>cursor</policy>
+    <cascadeOffset x="40" y="30" />
+  </placement>
+  <theme>
+    <name>Adwaita</name>
+    <icon>Win2kSVG-plasma5up-scalable-icontheme-blackysgate.de</icon>
+    <keepBorder>yes</keepBorder>
+    <dropShadows>no</dropShadows>
+    <cornerRadius>0</cornerRadius>
+    <maximizedDecoration>titlebar</maximizedDecoration>
+    <titlebar>
+	    <layout>:iconify,max,close</layout>
+    </titlebar>
+    <font place="ActiveWindow">
+      <name>GoMono Nerd Font</name>
+      <size>10</size>
+      <slant>normal</slant>
+      <weight>normal</weight>
+    </font>
+    <font place="InactiveWindow">
+      <name>GoMono Nerd Font</name>
+      <size>10</size>
+      <slant>normal</slant>
+      <weight>normal</weight>
+    </font>
+    <font place="MenuHeader">
+      <name>GoMono Nerd Font</name>
+      <size>10</size>
+      <slant>normal</slant>
+      <weight>normal</weight>
+    </font>
+    <font place="MenuItem">
+      <name>GoMono Nerd Font</name>
+      <size>10</size>
+      <slant>normal</slant>
+      <weight>normal</weight>
+    </font>
+    <font place="OnScreenDisplay">
+      <name>GoMono Nerd Font</name>
+      <size>10</size>
+      <slant>normal</slant>
+      <weight>normal</weight>
+    </font>
+  </theme>
+  <windowSwitcher preview="yes" outlines="yes">
+    <osd show="yes" style="thumbnail" output="all" thumbnailLabelFormat="%T" />
+    <fields>
+      <field content="icon" width="5%" />
+      <field content="desktop_entry_name" width="30%" />
+      <field content="title" width="65%" />
+    </fields>
+  </windowSwitcher>
+  <resistance>
+    <screenEdgeStrength>30</screenEdgeStrength>
+    <windowEdgeStrength>30</windowEdgeStrength>
+    <unSnapThreshold>20</unSnapThreshold>
+    <unMaximizeThreshold>150</unMaximizeThreshold>
+  </resistance>
+  <focus>
+    <followMouse>no</followMouse>
+    <followMouseRequiresMovement>yes</followMouseRequiresMovement>
+    <raiseOnFocus>no</raiseOnFocus>
+    <raiseOnFocusDelay>0</raiseOnFocusDelay>
+  </focus>
+  <snapping>
+    <range inner="10" outer="10" />
+    <cornerRange>50</cornerRange>
+    <overlay enabled="yes">
+      <delay inner="500" outer="500" />
+    </overlay>
+    <topMaximize>yes</topMaximize>
+    <notifyClient>always</notifyClient>
+  </snapping>
+  <desktops>
+    <popupTime>1000</popupTime>
+    <initial>&#x3AD;&#x3BD;&#x3B1;</initial>
+    <names>
+      <name>&#x3AD;&#x3BD;&#x3B1;</name>
+      <name>&#x3B4;&#x3CD;&#x3BF;</name>
+      <name>&#x3C4;&#x3C1;&#x3AF;&#x3B1;</name>
+      <name>&#x3C4;&#x3AD;&#x3C3;&#x3C3;&#x3B5;&#x3C1;&#x3B1;</name>
+      <name>&#x3C0;&#x3AD;&#x3BD;&#x3C4;&#x3B5;</name>
+    </names>
+  </desktops>
+  <margin top="2" bottom="2" left="2" right="2" />
+  <resize>
+    <popupShow>Never</popupShow>
+    <drawContents>yes</drawContents>
+    <minimumArea>8</minimumArea>
+  </resize>
+  <keyboard>
+    <default />
+
+    <!-- W super A alt C ctrl S shift -->
+    <layoutScope>global</layoutScope>
+    <repeatRate>25</repeatRate>
+    <repeatDelay>600</repeatDelay>
+
+    <!-- Basic stuff -->
+    <keybind key="W-S-q">
+      <action name="Exit" />
+    </keybind>
+    <keybind key="W-q">
+      <action name="Close" />
+    </keybind>
+    <keybind key="A-d">
+      <action name="Iconify" />
+    </keybind>
+    <keybind key="W-S-r">
+      <action name="Reconfigure" />
+    </keybind>
+    <keybind key="W-S-w">
+      <action name="ToggleKeybinds" />
+    </keybind>
+    <keybind key="W-S-m">
+      <action name="Execute" command="sh -c 'waylock -ignore-empty-password -init-color 0x000000 -input-color 0xe1dedb -input-alt-color 0xb2aeab -fail-color 0xff7f7e'" />
+    </keybind>
+    <keybind key="W-d">
+      <action name="Execute" command="sh -c 'wmenu-run -N &quot;#e1dedb&quot; -n &quot;#000000&quot; -S &quot;#b2aeab&quot; -s &quot;#222222&quot; -p &quot;Hello world!&quot; -M &quot;#b2aeab&quot; -m &quot;#000000&quot; -f &quot;JetBrainsMono Nerd Font 10&quot;'" />
+    </keybind> 
+    <keybind key="A-Tab">
+      <action name="NextWindow" />
+    </keybind>
+    <keybind key="A-S-Tab">
+      <action name="PreviousWindow" />
+    </keybind>
+    <keybind key="A-f">
+      <action name="ToggleMaximize" />
+    </keybind>
+    <keybind key="A-w">
+      <action name="ToggleShowDesktop" />
+    </keybind>
+    <keybind key="A-t">
+      <action name="ToggleOmnipresent" />
+    </keybind>
+    <keybind key="A-g">
+      <action name="ToggleAlwaysOnTop" />
+    </keybind>
+
+    <!-- apps -->
+    <keybind key="W-a">
+      <action name="Execute" command="foot" />
+    </keybind>
+    <keybind key="W-f">
+      <action name="Execute" command="qutebrowser" />
+    </keybind>
+
+    <!-- screenshots -->
+    <keybind key="W-S-s">
+      <action name="Execute" command="sh -c 'grim -g &quot;$(slurp)&quot; - | swappy -f -'" />
+    </keybind>
+    <keybind key="W-S-a">
+      <action name="Execute" command="sh -c 'grim - | swappy -f -'" />
+    </keybind>
+
+    <!-- workspaces -->
+    <keybind key="W-1">
+      <action name="GoToDesktop" to="&#x3AD;&#x3BD;&#x3B1;" wrap="yes" toggle="no" />
+    </keybind>
+    <keybind key="W-2">
+      <action name="GoToDesktop" to="&#x3B4;&#x3CD;&#x3BF;" wrap="yes" toggle="no" />
+    </keybind>
+    <keybind key="W-3">
+      <action name="GoToDesktop" to="&#x3C4;&#x3C1;&#x3AF;&#x3B1;" wrap="yes" toggle="no" />
+    </keybind>
+    <keybind key="W-4">
+      <action name="GoToDesktop" to="&#x3C4;&#x3AD;&#x3C3;&#x3C3;&#x3B5;&#x3C1;&#x3B1;" wrap="yes" toggle="no" />
+    </keybind>
+    <keybind key="W-5">
+      <action name="GoToDesktop" to="&#x3C0;&#x3AD;&#x3BD;&#x3C4;&#x3B5;" wrap="yes" toggle="no" />
+    </keybind>
+    <keybind key="A-1">
+      <action name="SendToDesktop" to="&#x3AD;&#x3BD;&#x3B1;" follow="no" wrap="yes" />
+    </keybind>
+    <keybind key="A-2">
+      <action name="SendToDesktop" to="&#x3B4;&#x3CD;&#x3BF;" follow="no" wrap="yes" />
+    </keybind>
+    <keybind key="A-3">
+      <action name="SendToDesktop" to="&#x3C4;&#x3C1;&#x3AF;&#x3B1;" follow="no" wrap="yes" />
+    </keybind>
+    <keybind key="A-4">
+      <action name="SendToDesktop" to="&#x3C4;&#x3AD;&#x3C3;&#x3C3;&#x3B5;&#x3C1;&#x3B1;" follow="no" wrap="yes" />
+    </keybind>
+    <keybind key="A-5">
+      <action name="SendToDesktop" to="&#x3C0;&#x3AD;&#x3BD;&#x3C4;&#x3B5;" follow="no" wrap="yes" />
+    </keybind>
+
+    <!-- vim keys -->
+    <keybind key="W-h">
+      <action name="MoveRelative" x="-40" />
+    </keybind>
+    <keybind key="W-l">
+      <action name="MoveRelative" x="40" />
+    </keybind>
+    <keybind key="W-k">
+      <action name="MoveRelative" y="-40" />
+    </keybind>
+    <keybind key="W-j">
+      <action name="MoveRelative" y="40" />
+    </keybind>
+
+    <keybind key="W-S-h">
+      <action name="MoveRelative" x="-80" />
+    </keybind>
+    <keybind key="W-S-l">
+      <action name="MoveRelative" x="80" />
+    </keybind>
+    <keybind key="W-S-k">
+      <action name="MoveRelative" y="-80" />
+    </keybind>
+    <keybind key="W-S-j">
+      <action name="MoveRelative" y="80" />
+    </keybind>
+
+    <keybind key="A-k">
+      <action name="ResizeRelative" bottom="-25" />
+    </keybind>
+    <keybind key="A-h">
+      <action name="ResizeRelative" right="-25" />
+    </keybind>
+    <keybind key="A-j">
+      <action name="ResizeRelative" bottom="25" />
+    </keybind>
+    <keybind key="A-l">
+      <action name="ResizeRelative" right="25" />
+    </keybind>
+
+    <keybind key="A-S-k">
+      <action name="ResizeRelative" bottom="-50" />
+    </keybind> 
+    <keybind key="A-S-h">
+      <action name="ResizeRelative" right="-50" />
+    </keybind> 
+    <keybind key="A-S-j">
+      <action name="ResizeRelative" bottom="50" />
+    </keybind> 
+    <keybind key="A-S-l">
+      <action name="ResizeRelative" right="50" />
+    </keybind> 
+    
+    <!-- some bullshit -->
+    <keybind key="A-Space">
+      <action name="ShowMenu" menu="client-menu" atCursor="no" />
+    </keybind>
+    <keybind key="XF86AudioLowerVolume">
+      <action name="Execute" command="pactl set-sink-volume @DEFAULT_SINK@ -5%" />
+    </keybind>
+    <keybind key="XF86AudioRaiseVolume">
+      <action name="Execute" command="pactl set-sink-volume @DEFAULT_SINK@ +5%" />
+    </keybind>
+    <keybind key="XF86AudioMute">
+      <action name="Execute" command="pactl set-sink-mute @DEFAULT_SINK@ toggle" />
+    </keybind>
+    <keybind key="XF86MonBrightnessUp">
+      <action name="Execute" command="brightnessctl set +10%" />
+    </keybind>
+    <keybind key="XF86MonBrightnessDown">
+      <action name="Execute" command="brightnessctl set 10%-" />
+    </keybind>
+  </keyboard>
+  <windowRules>
+    <windowRule identifier="discord" serverDecoration="yes" />
+  </windowRules>
+  <libinput>
+    <device>
+      <sendEventsMode>disabledOnExternalMouse</sendEventsMode>
+    </device>
+  </libinput>
+</labwc_config>

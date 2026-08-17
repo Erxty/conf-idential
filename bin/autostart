@@ -1,0 +1,5 @@
+#!/bin/sh
+
+export XKB_DEFAULT_LAYOUT=fi
+
+swc-launch howl -c .config/howl/howl.conf &

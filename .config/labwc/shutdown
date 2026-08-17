@@ -1,0 +1,2 @@
+#!/bin/sh
+killall pipewire wl-paste swaybg wlclock xdg-desktop-portal 2>/dev/null

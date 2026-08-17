@@ -1,0 +1,16 @@
+export XDG_CURRENT_DESKTOP=labwc
+export XDG_SESSION_TYPE=wayland
+
+pipewire &
+
+while [ ! -S "$XDG_RUNTIME_DIR/pipewire-0" ]; do sleep 0.2; done
+
+dbus-update-activation-environment XDG_CURRENT_DESKTOP XDG_SESSION_TYPE WAYLAND_DISPLAY DISPLAY 2>/dev/null
+
+/usr/libexec/xdg-desktop-portal -r &
+
+wlr-randr --output DP-1 --custom-mode 1280x960@90 &
+wl-paste --watch cliphist store &
+swaybg -m fill -i ~/Pictures/Wallpapers/Favourites/zaku-blue.jpg &
+wlclock --background-colour "#fff0c7" --border-colour "#011039" --border-size "3px" --clock-colour "#011039" --layer bottom --size 150 --position bottom-left --margin 0 0 25 25 --exclusive-zone off --hand-width 2px &
+

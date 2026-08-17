@@ -1,0 +1,183 @@
+#!/bin/sh
+
+# quick colours and those
+
+bg="#0d0d0d"
+fg="#c8c093"
+
+ft="Sony fixed"
+ft2="IPAG"
+
+geo="602x26+0+17"
+
+########################
+
+BFIF=/tmp/bar-fifo
+
+rm -f $BFIF 
+mkfifo $BFIF
+
+exec 5<>"$BFIF"
+
+
+
+# time
+time() {
+	while true; do
+		date +'T%R'
+		sleep 60
+	done
+}
+
+
+
+# workspaces
+ws() {
+	total=5
+
+	while true; do
+		rnws=$(howlc get_workspace)
+		out=""
+
+		case "$rnws" in
+			1) curname='%{T2}一つ%{T1}' ;;
+			2) curname='%{T2}二つ%{T1}' ;;
+			3) curname='%{T2}三つ%{T1}' ;;
+			4) curname='%{T2}四つ%{T1}' ;;
+			5) curname='%{T2}五つ%{T1}' ;;
+			*) curname='' ;;
+		esac
+
+		for i in $(seq 1 $total); do
+			if [ $i -eq $rnws ]; then
+				if [ $i -eq $total ]; then
+					out="${out}${curname}"
+				else
+					out="${out}${curname}%{O3}"
+				fi
+			else
+				if [ $i -eq $total ]; then
+					out="${out}."
+				else
+					out="${out}.%{O3}"
+				fi
+			fi
+		done
+		
+		printf 'W%s\n' "$out"
+		sleep 0.3
+
+	done
+}
+
+
+
+# volume
+vol() {
+	while true; do
+		volume=$(
+			amixer -c 0 get Master 2>/dev/null | 
+			sed -n 's/.*\[\([0-9][0-9]*\)%\].*/\1/p' |
+			head -n 1
+		)
+
+		if [ -n "$volume" ]; then
+			printf 'V%s %s%%\n' \
+			'%{T2}音量%{T1}' \
+			"$volume"
+		else
+			printf 'V%s\n' '%{T2}音量%{T1} --'
+		fi
+
+		sleep 1
+	done 
+}
+
+
+# internet connection
+net() {
+	while true; do
+		net=OFF
+
+		for iface in /sys/class/net/*; do
+			iface=${iface##*/}
+
+			[ "$iface" = "lo" ] && continue
+
+			state=$(cat "/sys/class/net/$iface/operstate" 2>/dev/null)
+
+			[ "$state" = "up" ] || continue
+
+			if [ -d "/sys/class/net/$iface/wireless" ]; then
+				net=WIFI
+			else
+				net=ETH
+			fi
+
+			break
+		done
+
+		printf 'N%s\n' "$net"
+		sleep 5
+	done
+}
+
+
+
+# battery
+bat() {
+	while true; do
+		read -r amount < /sys/class/power_supply/BAT0/capacity
+		read -r state < /sys/class/power_supply/BAT0/status
+
+		case "$state" in
+			"Charging"|"Not charging") state='+' ;;
+			"Full") state='=' ;;
+			*) state='-' ;;
+		esac
+
+		printf 'B%s\n' "$amount $state"
+		sleep 5
+	done
+}
+
+
+
+# temperature
+temp() {
+	while true; do
+		read -r temp < /sys/class/hwmon/hwmon0/temp1_input 2>/dev/null
+		temp=$((temp / 1000))
+
+		printf 't%s\n' "$temp°C"
+		sleep 10
+	done
+}
+
+
+ws >&5 &
+time >&5 &
+bat >&5 &
+temp >&5 &
+net >&5 &
+vol >&5 &
+
+
+while read -ru5 line; do
+	case "$line" in
+
+	T*) time="${line#?}";;
+	N*) net="${line#?}";;
+	V*) vol="${line#?}";;
+	t*) temp="${line#?}";;
+	B*) bat="${line#?}";;
+	W*) ws="${line#?}";;
+	esac
+	printf "%s\n" "%{O6}${time} | ${vol} | ${net} | ${temp}%{r}${bat} | ${ws}%{O6}"
+done |
+mojito -b \
+	-g "$geo" \
+	-f "$ft" \
+	-f "$ft2" \
+	-B "$bg" \
+	-F "$fg"
